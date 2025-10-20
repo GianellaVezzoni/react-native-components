@@ -1,8 +1,6 @@
 import React from "react";
-import { CalendarScreen } from "./src/screens/calendar";
+import { BottomBarDemo } from "./src/screens/bottomBarDemo";
 
 export default function App() {
-  return (
-    <CalendarScreen />
-  );
+  return <BottomBarDemo />;
 }
