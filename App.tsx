@@ -1,6 +1,6 @@
 import React from "react";
-import { BottomBarDemo } from "./src/screens/bottomBarDemo";
+import LoginExample from "./src/screens/login/loginExample";
 
 export default function App() {
-  return <BottomBarDemo />;
+  return <LoginExample />;
 }
