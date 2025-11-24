@@ -1,8 +1,8 @@
 import React from "react";
-import { CalendarScreen } from "./src/screens/calendar";
+import { KeychainScreen } from "./src/screens/keychain";
 
 export default function App() {
   return (
-    <CalendarScreen />
+    <KeychainScreen />
   );
 }
