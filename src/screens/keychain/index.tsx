@@ -118,7 +118,7 @@ export const KeychainScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styleSheet.container} edges={['top', 'bottom']}>
+    <SafeAreaView style={styleSheet.container} edges={['top', 'bottom', 'left', 'right']}>
       <ScrollView
         style={styleSheet.scrollView}
         contentContainerStyle={styleSheet.scrollContent}
