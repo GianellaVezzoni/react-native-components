@@ -2775,10 +2775,12 @@ __metadata:
     "@types/react-test-renderer": "npm:^19.1.0"
     eslint: "npm:^8.19.0"
     jest: "npm:^29.6.3"
+    lottie-react-native: "npm:^7.3.4"
     prettier: "npm:2.8.8"
     react: "npm:19.1.1"
     react-native: "npm:0.82.0"
     react-native-safe-area-context: "npm:^5.5.2"
+    react-native-user-inactivity: "npm:^1.2.0"
     react-test-renderer: "npm:19.1.1"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -6363,6 +6365,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie-react-native@npm:^7.3.4":
+  version: 7.3.4
+  resolution: "lottie-react-native@npm:7.3.4"
+  peerDependencies:
+    "@lottiefiles/dotlottie-react": ^0.13.5
+    react: "*"
+    react-native: ">=0.46"
+    react-native-windows: ">=0.63.x"
+  peerDependenciesMeta:
+    "@lottiefiles/dotlottie-react":
+      optional: true
+    react-native-windows:
+      optional: true
+  checksum: 10c0/e91e24e3ff36200db068de1d8f14757adc412e0ce71209cde29f1f594b50307ff28342dcfb5b5995d509e0a9f78b9e6a1ab0e414b27bba94e6d99b175658168c
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^10.0.1, lru-cache@npm:^10.2.0":
   version: 10.4.3
   resolution: "lru-cache@npm:10.4.3"
@@ -7496,6 +7515,19 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/797ad7d749bd42cbec8e504d969de13e17ed48506c2fd5a639d05d78d88194c21d72b9dc4608e08a2e8edac23341802e7b4661875242dc3bdce3008cfda5bcbe
+  languageName: node
+  linkType: hard
+
+"react-native-user-inactivity@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "react-native-user-inactivity@npm:1.2.0"
+  dependencies:
+    usetimeout-react-hook: "npm:^0.1.2"
+  peerDependencies:
+    react: ^17.0.0
+    react-native: ^0.63.0
+    react-native-background-timer: ^2.4.1
+  checksum: 10c0/23d97c596321abb4ff894c0ab6e39adfbf3420e47d7dacb3def9aa3d8e9ef283e5b9d5bee46357b23b86e0315f7ed5f6143c174df5b00173702ead67561fd625
   languageName: node
   linkType: hard
 
@@ -8745,6 +8777,16 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 10c0/4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"usetimeout-react-hook@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "usetimeout-react-hook@npm:0.1.2"
+  peerDependencies:
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: 10c0/3cc576a8c60f5d219a68910f1caeabc8ad17e5399da1616ba6f33c447cf19044cf0ca14f298523c089384e4956de9783e3b19588d84879e3c1526ee200678faf
   languageName: node
   linkType: hard
 

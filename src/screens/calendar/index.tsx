@@ -10,10 +10,12 @@ import {
 } from "react-native";
 import CalendarWidget from "../../components/calendarWidget";
 import { useStyles } from "./styles";
+import { useIdleAnimation } from "../../hooks/useIdleAnimation";
+import { InactivityAnimation } from "../../components/inactivityAnimation";
 
 enum Theme {
     Light = 'light',
-    Dark = 'dark',
+    Dark = 'dark',  
     Auto = 'auto',
 }
 
@@ -23,11 +25,14 @@ export const CalendarScreen = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [manualTheme, setManualTheme] = useState<Theme>(Theme.Auto);
   
+  const { isVisible, resetIdleTimer, UserInactivityWrapper } = useIdleAnimation(3000);
+  
   const activeTheme = manualTheme === Theme.Auto 
     ? (systemTheme || Theme.Light) 
     : manualTheme;
   const isDark = activeTheme === Theme.Dark;
   const goToPreviousMonth = () => {
+    resetIdleTimer();
     setCurrentDate(prev => {
       const newDate = new Date(prev);
       newDate.setMonth(prev.getMonth() - 1);
@@ -36,6 +41,7 @@ export const CalendarScreen = () => {
   };
 
   const goToNextMonth = () => {
+    resetIdleTimer();
     setCurrentDate(prev => {
       const newDate = new Date(prev);
       newDate.setMonth(prev.getMonth() + 1);
@@ -44,10 +50,12 @@ export const CalendarScreen = () => {
   };
 
   const goToToday = () => {
+    resetIdleTimer();
     setCurrentDate(new Date());
   };
 
   const toggleTheme = () => {
+    resetIdleTimer();
     if (manualTheme === Theme.Auto) {
       setManualTheme(Theme.Light);
     } else if (manualTheme === Theme.Light) {
@@ -55,6 +63,18 @@ export const CalendarScreen = () => {
     } else {
       setManualTheme(Theme.Auto);
     }
+  };
+
+  const handleMascotPress = () => {
+    resetIdleTimer();
+  };
+
+  const handleScroll = () => {
+    resetIdleTimer();
+  };
+
+  const handleTouchStart = () => {
+    resetIdleTimer();
   };
 
   const getThemeIcon = () => {
@@ -70,13 +90,20 @@ export const CalendarScreen = () => {
   };
 
   return (
-    <SafeAreaView style={[styles.container, isDark && styles.containerDark]}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
-      
-      <ScrollView 
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
+    <UserInactivityWrapper>
+      <SafeAreaView 
+        style={[styles.container, isDark && styles.containerDark]}
+        onTouchStart={handleTouchStart}
       >
+        <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+        
+        <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+          onScroll={handleScroll}
+          scrollEventThrottle={400}
+          onTouchStart={handleTouchStart}
+        >
         <View style={styles.header}>
           <View>
             <Text style={[styles.title, isDark && styles.titleDark]}>
@@ -134,6 +161,7 @@ export const CalendarScreen = () => {
           currentDate={currentDate}
           theme={manualTheme}
           onDateSelect={(date) => {
+            resetIdleTimer();
             console.log('Selected date:', date);
           }}
         />
@@ -168,7 +196,14 @@ export const CalendarScreen = () => {
             </Text>
           </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+        
+        <InactivityAnimation 
+          visible={isVisible}
+          onPress={handleMascotPress}
+          size={80}
+        />
+      </SafeAreaView>
+    </UserInactivityWrapper>
   );
 }
