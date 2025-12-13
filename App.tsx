@@ -1,8 +1,8 @@
 import React from "react";
-import { CalendarScreen } from "./src/screens/calendar";
+import { LoadingComparisonScreen } from "./src/screens/loadingComparison";
 
 export default function App() {
   return (
-    <CalendarScreen />
+    <LoadingComparisonScreen />
   );
 }
