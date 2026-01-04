@@ -1,3 +1,6 @@
+# Patch for kconv compatibility with Ruby 3.4+
+require_relative '../kconv_patch'
+
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -30,5 +33,14 @@ target 'AwesomeProject' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    
+    # Copy Vector Icons fonts
+    installer.pods_project.targets.each do |target|
+      if target.name == 'react-native-vector-icons'
+        target.build_configurations.each do |config|
+          config.build_settings['INFOPLIST_FILE'] = '$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager/Info.plist'
+        end
+      end
+    end
   end
 end

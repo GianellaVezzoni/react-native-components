@@ -1,8 +1,6 @@
 import React from "react";
-import { LoadingComparisonScreen } from "./src/screens/loadingComparison";
+import { PermissionsComparisonScreen } from "./src/screens/permissions";
 
 export default function App() {
-  return (
-    <LoadingComparisonScreen />
-  );
+  return <PermissionsComparisonScreen />;
 }
